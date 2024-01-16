@@ -2,6 +2,9 @@ package org.example;
 
 import java.util.Calendar;
 
+/** Я создал класс Ticket, который содержит нужные поля
+ * в соотвествии с даннами о каждом билете, который у нас есть в файле ticket.json.
+ * Также создал getter и setter методы для них */
 public class Ticket {
     private String origin;
     private String originName;
