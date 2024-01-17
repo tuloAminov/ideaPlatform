@@ -19,7 +19,7 @@ public class TicketService {
     /** Метод main() выводит нужные данные в консоль. */
     public static void main(String[] args) throws IOException {
         System.out.println(minFlightTime());
-        System.out.println(averagePriceMedianDifference());
+        System.out.println("Разницу между средней ценой и медианой для полета между городами Владивосток и Тель-Авив - " + averagePriceMedianDifference());
     }
 
     /** В метод minFlightTime() программа ищет минимальное время полета
