@@ -51,11 +51,23 @@ public class TicketService {
         return stringBuilder.toString();
     }
 
-    /** В метод averagePriceMedianDifference() программа ищет разницу между средней ценой и медианой
-     *  для полета между городами  Владивосток и Тель-Авив. */
-    public static String averagePriceMedianDifference() {
+    /** В метод averagePriceMedianDifference() программа ищет средную цену и медиану билетов.
+     *  Возвращает разницу между ними для полета между городами Владивосток и Тель-Авив. */
+    public static double averagePriceMedianDifference() throws IOException {
+        ArrayList<Integer> prices = new ArrayList<>();
+        for (Ticket ticket : readFromJsonFile()) {
+            if (ticket.getOrigin().equals("VVO") && ticket.getDestination().equals("TLV"))
+                prices.add(ticket.getPrice());
+        }
 
-        return null;
+        double average = prices.stream().mapToInt(val -> val).average().orElse(0.0);
+        double median;
+        if (prices.size() % 2 == 0)
+            median = ((double) prices.get(prices.size() / 2) + (double) prices.get(prices.size() / 2 - 1))/2;
+        else
+            median = (double) prices.get(prices.size() / 2);
+
+        return average;
     }
 
     /** Метод readFromJsonFile() читает файл json, получает данные из него,
